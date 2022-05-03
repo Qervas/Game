@@ -1,6 +1,5 @@
 #include "tile.h"
 #include"game.h"
-#include <QWidget>
 #include <QKeyEvent>
 #include <math.h>
 void Tile::paintEvent(QPaintEvent *){ //paint each tile of the 4-by-4 grid

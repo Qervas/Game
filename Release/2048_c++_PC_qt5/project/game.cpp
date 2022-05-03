@@ -83,31 +83,31 @@ void core::generation(){     //spawn a tile in a blank block
 
  /******Detect whether the tiles are movable on the horizon or vertical direction*******/
  bool core::horizonMovable(){
-                for(int i = 0; i < row; i++){
-                    for(int j = 0; j < column-1; j++){
-                        if(_tileList[j][i]->getNumber() == _tileList[j+1][i]->getNumber()){
-                           //Any pair of left and right adjacent numbers are equal
-        //                    qDebug()<<"HorizonlyMovable: yes";
-                            return true;//Movable
-                        }
-                    }
-                }
-        //        qDebug()<<"HorizonlyMovable: no";
-                return false;//stucked
+    for(int i = 0; i < row; i++){
+        for(int j = 0; j < column-1; j++){
+            if(_tileList[j][i]->getNumber() == _tileList[j+1][i]->getNumber()){
+                //Any pair of left and right adjacent numbers are equal
+//                    qDebug()<<"HorizonlyMovable: yes";
+                return true;//Movable
             }
+        }
+    }
+//        qDebug()<<"HorizonlyMovable: no";
+    return false;//stucked
+}
 bool core::verticalMovable(){
-                for(int j = 0; j < column; j++){
-                    for(int i = 0; i< row -1; i++){
-                        if(_tileList[j][i]->getNumber() == _tileList[j][i+1]->getNumber()){
-                            //Any pair of up and down adjacent numbers are equal
-        //                    qDebug()<<"VM : yes";
-                            return true;//Movable
-                        }
-                    }
-                }
-        //        qDebug()<<"VM : no";
-                return false;//stucked
+    for(int j = 0; j < column; j++){
+        for(int i = 0; i< row -1; i++){
+            if(_tileList[j][i]->getNumber() == _tileList[j][i+1]->getNumber()){
+                //Any pair of up and down adjacent numbers are equal
+//                    qDebug()<<"VM : yes";
+                return true;//Movable
             }
+        }
+    }
+//        qDebug()<<"VM : no";
+    return false;//stucked
+}
 
 int core::getScore(){            //Function access score to avoid variable directly access
    return score;

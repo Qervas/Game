@@ -175,8 +175,8 @@ void core::right(){
                     }
                 }
             }
-            }
         }
+    }
     if(flag){//movement detector triggered
     generation();//randomly generate a number at a random position
     }
@@ -212,8 +212,8 @@ void core::left(){//to read exact instruction check the bottom of the file
                     }
                 }
             }
-            }
         }
+    }
     if(flag){//movement detector triggered
     generation();//randomly generate a number at a random position
     }
