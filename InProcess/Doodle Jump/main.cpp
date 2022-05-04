@@ -3,16 +3,24 @@
  * @Date: 2022-05-04 00:51:30
  * @LastEditors: FrankTudor
  * @Description: This file is created, edited, contributed by FrankTudor
- * @LastEditTime: 2022-05-04 23:16:45
+ * @LastEditTime: 2022-05-05 00:21:46
  */
 #include<SFML/Graphics.hpp>
 #include<time.h>
 #include<iostream>
 #include<string>
 #include<filesystem>
-#define WIDTH 400
-#define HEIGHT 533
+#define BACKGROUND_WIDTH 400
+#define BACKGROUND_HEIGHT 533
+#define PLATFORM_WIDTH 68
+#define PLATFORM_HEIGHT 14
+#define DOODLE_WIDTH 74
+#define DOODLE_HEIGHT 75
 #define DEATH_HEIGHT 508
+#define RIGHT_HAND_SIDE 1
+#define LEFT_HAND_SIDE 0
+
+
 #define VINCIBLE
 using namespace sf;
 using std::filesystem::current_path;
@@ -26,6 +34,7 @@ int jumpHeight = 0;
 int lastPlatformId = -1;
 int lastPlatformHeight = 0;
 int platformCount = 0;
+bool direction = RIGHT_HAND_SIDE;
 
 void init(){
 	h=200;
@@ -40,18 +49,19 @@ void init(){
 	lastPlatformId = -1;
 	lastPlatformHeight = DEATH_HEIGHT ;
 	platformCount = 0;
+
 }
 
 int main(){
 	std::string dir = current_path();
 	srand(time(NULL));
-	RenderWindow app(VideoMode(WIDTH,HEIGHT), "Doodle Jump!");
+	RenderWindow app(VideoMode(BACKGROUND_WIDTH,BACKGROUND_HEIGHT), "Doodle Jump!");
 	app.setFramerateLimit(60);
 	 
 	Texture tBackground, tDoodle, tPlatform, tGameOver;
-	tBackground.loadFromFile(dir + "/../images/background.png");
-	tDoodle.loadFromFile(dir + "/../images/doodle-jumper.png");
-	tPlatform.loadFromFile(dir + "/../images/platform.png");
+	tBackground.loadFromFile(dir + "/../images/background.jpg");
+	tDoodle.loadFromFile(dir + "/../images/doodle_jumper.png");
+	tPlatform.loadFromFile(dir + "/../images/platform_backup.png");
 	tGameOver.loadFromFile(dir + "/../images/gameOver.png");
 
 	Sprite  sDoodle(tDoodle), sPlatform(tPlatform), sGameOver(tGameOver);
@@ -82,8 +92,21 @@ int main(){
                 app.close();
         }
 
-		if (Keyboard::isKeyPressed(Keyboard::Right)){x+=3;}//right
-		if (Keyboard::isKeyPressed(Keyboard::Left)){x-=3;}//left
+		if (Keyboard::isKeyPressed(Keyboard::Right)){
+			// if(direction != RIGHT_HAND_SIDE){
+			// 	direction = RIGHT_HAND_SIDE;
+			// 	sDoodle.setScale(-1,1);
+			// }
+			x+=3;
+
+		}//right
+		if (Keyboard::isKeyPressed(Keyboard::Left)){
+			// if(direction != LEFT_HAND_SIDE){
+			// 	direction = LEFT_HAND_SIDE;
+			// 	sDoodle.setScale(-1,1);
+			// }
+			x-=3;
+		}//left
 
 		dy+=0.2;
 		y+=dy;
@@ -93,13 +116,13 @@ int main(){
 			for (int i=0;i<10;i++){
 				y=h;
 				plat[i].y=plat[i].y-dy;
-				if (plat[i].y>533) {plat[i].y=0; plat[i].x=rand()%400;}
+				if (plat[i].y>533) {plat[i].y=0; plat[i].x=rand()%BACKGROUND_WIDTH;}
 			}
 		}
 		int curPlatformHeight = 0;
 		for (int i=0;i<10;i++){// jump on the platform
-			if ((x+50>plat[i].x) && (x+20<plat[i].x+68)
-			&& (y+70>plat[i].y) && (y+70<plat[i].y+14) && (dy>0)){
+			if ((x+50>plat[i].x) && (x+20<plat[i].x+PLATFORM_WIDTH)
+			&& (y+70>plat[i].y) && (y+70<plat[i].y+PLATFORM_HEIGHT) && (dy>0)){
 				curPlatformHeight = (plat[i].y);
 				// printf("%d: platform height: %d || %d: last height: %d\n", i ,curPlatformHeight, lastPlatformId, lastPlatformHeight);
 				if(lastPlatformId != i){
@@ -114,8 +137,8 @@ int main(){
 				dy=-10;
 			}  
 		}
-		if(x < -80){x = x + 460;}//x scope from -80 to 380
-		if(x > 380){x = x - 460;}
+		if(x < -DOODLE_WIDTH){x = x + 460;}//x scope from -80 to 380
+		if(x > BACKGROUND_WIDTH - 100 + DOODLE_WIDTH){x = x - 460;}
 
 		sDoodle.setPosition(x,y);
 
@@ -128,7 +151,6 @@ int main(){
 	if(y >= DEATH_HEIGHT){//Death handler
 		app.clear();
 		app.draw(sGameOver);
-
 		app.display();
 		while(1){
 			if(Keyboard::isKeyPressed(Keyboard::R)){break;}
@@ -142,8 +164,6 @@ int main(){
 		
 	}		
 #endif
-		String a = "a %d";
-		
 		showTex = std::string("Score: ") + std::to_string(jumpHeight/10) + std::string(", ") + std::to_string(platformCount) + std::string(" Jumps");
 		score.setString(showTex);
 		app.draw(score);
