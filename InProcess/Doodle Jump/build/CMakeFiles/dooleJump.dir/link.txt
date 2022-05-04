@@ -1,0 +1,2 @@
+/usr/bin/ar qc libdooleJump.a CMakeFiles/dooleJump.dir/main.cpp.o
+/usr/bin/ranlib libdooleJump.a

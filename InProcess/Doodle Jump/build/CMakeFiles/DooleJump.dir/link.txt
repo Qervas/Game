@@ -1,0 +1,1 @@
+/usr/lib64/ccache/c++  -std=c++17 CMakeFiles/DooleJump.dir/main.cpp.o -o DooleJump  -lsfml-graphics -lsfml-window -lsfml-system 
