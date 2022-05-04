@@ -1,4 +1,4 @@
-/home/franktudor/lab/Game/Doodle Jump/build/CMakeFiles/dooleJump.dir
-/home/franktudor/lab/Game/Doodle Jump/build/CMakeFiles/DooleJump.dir
-/home/franktudor/lab/Game/Doodle Jump/build/CMakeFiles/edit_cache.dir
-/home/franktudor/lab/Game/Doodle Jump/build/CMakeFiles/rebuild_cache.dir
+/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build/CMakeFiles/dooleJump.dir
+/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build/CMakeFiles/DooleJump.dir
+/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build/CMakeFiles/edit_cache.dir
+/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build/CMakeFiles/rebuild_cache.dir

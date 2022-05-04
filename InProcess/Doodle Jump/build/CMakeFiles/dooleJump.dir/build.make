@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/home/franktudor/lab/Game/Doodle Jump"
+CMAKE_SOURCE_DIR = "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/home/franktudor/lab/Game/Doodle Jump/build"
+CMAKE_BINARY_DIR = "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/dooleJump.dir/depend.make
@@ -72,16 +72,16 @@ include CMakeFiles/dooleJump.dir/flags.make
 CMakeFiles/dooleJump.dir/main.cpp.o: CMakeFiles/dooleJump.dir/flags.make
 CMakeFiles/dooleJump.dir/main.cpp.o: ../main.cpp
 CMakeFiles/dooleJump.dir/main.cpp.o: CMakeFiles/dooleJump.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/franktudor/lab/Game/Doodle Jump/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/dooleJump.dir/main.cpp.o"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dooleJump.dir/main.cpp.o -MF CMakeFiles/dooleJump.dir/main.cpp.o.d -o CMakeFiles/dooleJump.dir/main.cpp.o -c "/home/franktudor/lab/Game/Doodle Jump/main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/dooleJump.dir/main.cpp.o"
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/dooleJump.dir/main.cpp.o -MF CMakeFiles/dooleJump.dir/main.cpp.o.d -o CMakeFiles/dooleJump.dir/main.cpp.o -c "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/main.cpp"
 
 CMakeFiles/dooleJump.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/dooleJump.dir/main.cpp.i"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/franktudor/lab/Game/Doodle Jump/main.cpp" > CMakeFiles/dooleJump.dir/main.cpp.i
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/main.cpp" > CMakeFiles/dooleJump.dir/main.cpp.i
 
 CMakeFiles/dooleJump.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/dooleJump.dir/main.cpp.s"
-	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/franktudor/lab/Game/Doodle Jump/main.cpp" -o CMakeFiles/dooleJump.dir/main.cpp.s
+	/usr/lib64/ccache/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/main.cpp" -o CMakeFiles/dooleJump.dir/main.cpp.s
 
 # Object files for target dooleJump
 dooleJump_OBJECTS = \
@@ -93,7 +93,7 @@ dooleJump_EXTERNAL_OBJECTS =
 libdooleJump.a: CMakeFiles/dooleJump.dir/main.cpp.o
 libdooleJump.a: CMakeFiles/dooleJump.dir/build.make
 libdooleJump.a: CMakeFiles/dooleJump.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/franktudor/lab/Game/Doodle Jump/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libdooleJump.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libdooleJump.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/dooleJump.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/dooleJump.dir/link.txt --verbose=$(VERBOSE)
 
@@ -106,6 +106,6 @@ CMakeFiles/dooleJump.dir/clean:
 .PHONY : CMakeFiles/dooleJump.dir/clean
 
 CMakeFiles/dooleJump.dir/depend:
-	cd "/home/franktudor/lab/Game/Doodle Jump/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/franktudor/lab/Game/Doodle Jump" "/home/franktudor/lab/Game/Doodle Jump" "/home/franktudor/lab/Game/Doodle Jump/build" "/home/franktudor/lab/Game/Doodle Jump/build" "/home/franktudor/lab/Game/Doodle Jump/build/CMakeFiles/dooleJump.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump" "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump" "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build" "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build" "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/build/CMakeFiles/dooleJump.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/dooleJump.dir/depend
 

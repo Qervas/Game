@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/franktudor/lab/Game/Doodle Jump/main.cpp" "CMakeFiles/DooleJump.dir/main.cpp.o" "gcc" "CMakeFiles/DooleJump.dir/main.cpp.o.d"
+  "/home/franktudor/Documents/GitHub/Game/InProcess/Doodle Jump/main.cpp" "CMakeFiles/DooleJump.dir/main.cpp.o" "gcc" "CMakeFiles/DooleJump.dir/main.cpp.o.d"
   )
 
 # Targets to which this target links.

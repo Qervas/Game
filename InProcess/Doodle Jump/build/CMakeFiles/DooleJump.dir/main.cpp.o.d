@@ -1,5 +1,5 @@
 CMakeFiles/DooleJump.dir/main.cpp.o: \
- /home/franktudor/lab/Game/Doodle\ Jump/main.cpp \
+ /home/franktudor/Documents/GitHub/Game/InProcess/Doodle\ Jump/main.cpp \
  /usr/include/stdc-predef.h /usr/local/include/SFML/Graphics.hpp \
  /usr/local/include/SFML/Window.hpp /usr/local/include/SFML/System.hpp \
  /usr/local/include/SFML/Config.hpp \

@@ -3,7 +3,7 @@
  * @Date: 2022-05-04 00:51:30
  * @LastEditors: FrankTudor
  * @Description: This file is created, edited, contributed by FrankTudor
- * @LastEditTime: 2022-05-04 17:31:47
+ * @LastEditTime: 2022-05-04 23:16:45
  */
 #include<SFML/Graphics.hpp>
 #include<time.h>
@@ -57,17 +57,26 @@ int main(){
 	Sprite  sDoodle(tDoodle), sPlatform(tPlatform), sGameOver(tGameOver);
 	Sprite sBackground(tBackground);
 	init();
-
-	Text score;
-	score.setString("Score: ");
-	score.setCharacterSize(24);
-	score.setFillColor(Color::Black);
-	score.setPosition(100,100);
 	sGameOver.setPosition(100,100);
-    while (app.isOpen()){
-        Event e;
-		app.draw(score);
 
+
+
+	Font font;
+	if(!font.loadFromFile(dir + "/../Font/Roboto-Black.ttf")){
+		throw  std::runtime_error("Font loading failed");
+	}
+	String showTex = "Score: 0";
+	Text score(showTex,font);
+	score.setCharacterSize(30);
+	score.setFillColor(Color::Blue);
+	score.setStyle(Text::Bold);
+	score.setPosition(0,0);
+
+    while (app.isOpen()){
+		app.clear();
+		app.draw(sBackground);
+
+        Event e;
         while (app.pollEvent(e)){
             if (e.type == Event::Closed)
                 app.close();
@@ -94,20 +103,22 @@ int main(){
 				curPlatformHeight = (plat[i].y);
 				// printf("%d: platform height: %d || %d: last height: %d\n", i ,curPlatformHeight, lastPlatformId, lastPlatformHeight);
 				if(lastPlatformId != i){
+					if(jumpHeight < 0){jumpHeight = 0;}//it's a bug, sometimes height is below zero
 					lastPlatformId = i;
 					jumpHeight+= -(curPlatformHeight - lastPlatformHeight);
 					lastPlatformHeight += curPlatformHeight;
-					printf("score: %d, %d jumps\n", jumpHeight/10, ++platformCount);
+					++platformCount;
+					// printf("score: %d, %d jumps\n", jumpHeight/10, platformCount);
+					
 				}
 				dy=-10;
 			}  
 		}
-		if(x < -80){x = x + 460;}
+		if(x < -80){x = x + 460;}//x scope from -80 to 380
 		if(x > 380){x = x - 460;}
 
 		sDoodle.setPosition(x,y);
 
-		app.draw(sBackground);
 		app.draw(sDoodle);
 		for (int i=0;i<10;i++){
 			sPlatform.setPosition(plat[i].x,plat[i].y);
@@ -117,6 +128,7 @@ int main(){
 	if(y >= DEATH_HEIGHT){//Death handler
 		app.clear();
 		app.draw(sGameOver);
+
 		app.display();
 		while(1){
 			if(Keyboard::isKeyPressed(Keyboard::R)){break;}
@@ -130,7 +142,11 @@ int main(){
 		
 	}		
 #endif
-
+		String a = "a %d";
+		
+		showTex = std::string("Score: ") + std::to_string(jumpHeight/10) + std::string(", ") + std::to_string(platformCount) + std::string(" Jumps");
+		score.setString(showTex);
+		app.draw(score);
 		app.display();
 	}
 
