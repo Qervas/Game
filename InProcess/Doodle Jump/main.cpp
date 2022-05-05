@@ -3,7 +3,7 @@
  * @Date: 2022-05-04 00:51:30
  * @LastEditors: FrankTudor
  * @Description: This file is created, edited, contributed by FrankTudor
- * @LastEditTime: 2022-05-05 00:21:46
+ * @LastEditTime: 2022-05-05 12:39:08
  */
 #include<SFML/Graphics.hpp>
 #include<time.h>
@@ -30,11 +30,14 @@ struct point{
 point plat[20];
 int x=100,y=100,h=200;
 float dx=0,dy=0;
-int jumpHeight = 0;
+int jumpScore = 0;
 int lastPlatformId = -1;
 int lastPlatformHeight = 0;
 int platformCount = 0;
+int highestScore = 0;
+int highestJump = 0;
 bool direction = RIGHT_HAND_SIDE;
+int curPlatformHeight = 0;
 
 void init(){
 	h=200;
@@ -45,10 +48,11 @@ void init(){
 	}
 	x = plat[0].x+20;
 	y = plat[0].y-20;
-	jumpHeight = 0;
+	jumpScore = 0;
 	lastPlatformId = -1;
 	lastPlatformHeight = DEATH_HEIGHT ;
 	platformCount = 0;
+	curPlatformHeight = 0;
 
 }
 
@@ -72,16 +76,20 @@ int main(){
 
 
 	Font font;
-	if(!font.loadFromFile(dir + "/../Font/Roboto-Black.ttf")){
+	if(!font.loadFromFile(dir + "/../Font/Tapestry-Regular.ttf")){
 		throw  std::runtime_error("Font loading failed");
 	}
-	String showTex = "Score: 0";
-	Text score(showTex,font);
+	String showTex;
+	Text score("",font);
 	score.setCharacterSize(30);
-	score.setFillColor(Color::Blue);
+	score.setFillColor(Color::Magenta);
 	score.setStyle(Text::Bold);
 	score.setPosition(0,0);
 
+	Text record("",font);
+	record.setCharacterSize(40);
+	record.setFillColor(Color::White);
+	
     while (app.isOpen()){
 		app.clear();
 		app.draw(sBackground);
@@ -116,22 +124,21 @@ int main(){
 			for (int i=0;i<10;i++){
 				y=h;
 				plat[i].y=plat[i].y-dy;
-				if (plat[i].y>533) {plat[i].y=0; plat[i].x=rand()%BACKGROUND_WIDTH;}
+				if (plat[i].y>BACKGROUND_HEIGHT) {plat[i].y=0; plat[i].x=rand()%BACKGROUND_WIDTH;}//generate new platform
 			}
 		}
-		int curPlatformHeight = 0;
+		
 		for (int i=0;i<10;i++){// jump on the platform
 			if ((x+50>plat[i].x) && (x+20<plat[i].x+PLATFORM_WIDTH)
 			&& (y+70>plat[i].y) && (y+70<plat[i].y+PLATFORM_HEIGHT) && (dy>0)){
-				curPlatformHeight = (plat[i].y);
+				curPlatformHeight = DEATH_HEIGHT - plat[i].y;
 				// printf("%d: platform height: %d || %d: last height: %d\n", i ,curPlatformHeight, lastPlatformId, lastPlatformHeight);
 				if(lastPlatformId != i){
-					if(jumpHeight < 0){jumpHeight = 0;}//it's a bug, sometimes height is below zero
+					if(jumpScore < 0){jumpScore = 0;}//it's a bug, sometimes height is below zero
 					lastPlatformId = i;
-					jumpHeight+= -(curPlatformHeight - lastPlatformHeight);
-					lastPlatformHeight += curPlatformHeight;
+					jumpScore+= curPlatformHeight;
 					++platformCount;
-					// printf("score: %d, %d jumps\n", jumpHeight/10, platformCount);
+					// printf("score: %d, %d jumps\n", jumpScore/10, platformCount);
 					
 				}
 				dy=-10;
@@ -150,6 +157,10 @@ int main(){
 #ifdef VINCIBLE
 	if(y >= DEATH_HEIGHT){//Death handler
 		app.clear();
+		showTex = std::string("Record: ") + std::to_string(highestScore) + std::string("m\n\t\t\t  ") + std::to_string(highestJump) + std::string(" Jumps");
+
+		record.setString(showTex);
+		app.draw(record);
 		app.draw(sGameOver);
 		app.display();
 		while(1){
@@ -164,7 +175,9 @@ int main(){
 		
 	}		
 #endif
-		showTex = std::string("Score: ") + std::to_string(jumpHeight/10) + std::string(", ") + std::to_string(platformCount) + std::string(" Jumps");
+		highestScore = highestScore < jumpScore/120 ? highestScore + jumpScore/120 : highestScore;
+		highestJump = highestJump < platformCount ? platformCount : highestJump;
+		showTex = std::string("Score: ") + std::to_string(jumpScore/120) + std::string("m ,") + std::to_string(platformCount) + std::string(" Jumps");
 		score.setString(showTex);
 		app.draw(score);
 		app.display();
