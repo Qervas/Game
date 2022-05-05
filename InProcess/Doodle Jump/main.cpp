@@ -3,7 +3,7 @@
  * @Date: 2022-05-04 00:51:30
  * @LastEditors: FrankTudor
  * @Description: This file is created, edited, contributed by FrankTudor
- * @LastEditTime: 2022-05-05 12:39:08
+ * @LastEditTime: 2022-05-05 12:41:39
  */
 #include<SFML/Graphics.hpp>
 #include<time.h>
@@ -175,9 +175,9 @@ int main(){
 		
 	}		
 #endif
-		highestScore = highestScore < jumpScore/120 ? highestScore + jumpScore/120 : highestScore;
+		highestScore = highestScore < jumpScore/100 ? highestScore + jumpScore/120 : highestScore;
 		highestJump = highestJump < platformCount ? platformCount : highestJump;
-		showTex = std::string("Score: ") + std::to_string(jumpScore/120) + std::string("m ,") + std::to_string(platformCount) + std::string(" Jumps");
+		showTex = std::string("Score: ") + std::to_string(jumpScore/100) + std::string("m ,") + std::to_string(platformCount) + std::string(" Jumps");
 		score.setString(showTex);
 		app.draw(score);
 		app.display();
