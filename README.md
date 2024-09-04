@@ -13,6 +13,18 @@
 * Flappy arrow(AI control)
   ![img](./Figures/flappy_arrow.png)
 
+* Black myth: wukong AI control assistant
+
+- [x] Can defeat weak enemies
+- [ ] Can defeat medium enemies
+
+
+![img](./Figures/black_myth.png)
+
+
   Thx for the visit!
+
+
+
 
 More are coming~
